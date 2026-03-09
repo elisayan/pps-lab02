@@ -47,4 +47,10 @@ object es2 extends App {
 
   print(p4(1, 2, 3).toString + " ")
   println(p4(1, 2, 2))
+
+  //point 5
+  print("Point 5: ")
+  def compose(f: Int => Int, g: Int => Int): Int => Int = x => f(g(x))
+
+  println(compose(_ - 1, _ * 2)(5)) // 9
 }
