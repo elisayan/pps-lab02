@@ -1,7 +1,13 @@
 package it.unibo.pps.u02
 
+import it.unibo.pps.u02.Lab2.Expr.{Add, Literal, Multiply}
+
 object Lab2 extends App {
   //Task 1
+  println("Task 1:")
+
+  println("Hello World")
+
   def divide(x: Double, y: Double): Double = x / y
 
   def divideCurried(x: Double)(y: Double): Double = x / y
@@ -10,6 +16,7 @@ object Lab2 extends App {
   println(divideCurried(4)(2))
 
   //Task 2
+  println("\nTask 2:")
   //point 3 a
   println("Point 3a:")
   val x = -2
@@ -64,6 +71,8 @@ object Lab2 extends App {
   println(compose(_ - 1, _ * 2)(5)) // 9
 
   //Task 3
+  println("\nTask 3:")
+
   def power(base: Double, exponent: Int): Double = exponent match {
     case positive if exponent > 0 => base * power(base, exponent - 1)
     case 0 => 1.0
@@ -94,8 +103,30 @@ object Lab2 extends App {
 
     getDigit(n, 0)
   }
+
   println("Reversion number: ")
   println(reverseNumber(12345))
+
+  //Task 4
+  enum Expr:
+    case Literal(v: Int)
+    case Add(l: Expr, r: Expr)
+    case Multiply(l: Expr, r: Expr)
+
+  def evaluate(e: Expr): Int = e match {
+    case Literal(v) => v
+    case Add(l, r) => evaluate(l) + evaluate(r)
+    case Multiply(l, r) => evaluate(l) * evaluate(r)
+  }
+
+  def show(e: Expr): String = e match
+    case Literal(v) => v.toString
+    case Add(l, r) => "(" + show(l) + " + " + show(r) + ")"
+    case Multiply(l, r) => "(" + show(l) + " * " + show(r) + ")"
+
+  println("\nTask 4:")
+  val example = Multiply(Literal(2), Add(Literal(3), Literal(4)))
+  println(show(example) + " = " + evaluate(example))
 
 
 }
