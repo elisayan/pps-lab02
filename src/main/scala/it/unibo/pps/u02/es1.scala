@@ -2,7 +2,7 @@ package it.unibo.pps.u02
 
 //Tasks part 1
 object es1 extends App:
-  println("Hi")
+  println("Hello World")
 
   def divide(x: Double, y: Double): Double = x / y
 
