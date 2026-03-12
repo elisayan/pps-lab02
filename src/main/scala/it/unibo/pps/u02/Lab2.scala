@@ -64,25 +64,38 @@ object Lab2 extends App {
   println(compose(_ - 1, _ * 2)(5)) // 9
 
   //Task 3
-  def power(base: Double, exponent:Int) : Double = exponent match {
+  def power(base: Double, exponent: Int): Double = exponent match {
     case positive if exponent > 0 => base * power(base, exponent - 1)
     case 0 => 1.0
   }
 
   println("Results power: ")
-  println(power(2,3))
+  println(power(2, 3))
   println(power(5, 2))
 
-  def power_tail (base: Double, exponent : Int) : Double = {
-    def loop (res: Double, e: Int): Double = e match {
-      case positive if e > 0 => loop(res * base, e-1)
+  def power_tail(base: Double, exponent: Int): Double = {
+    def loop(res: Double, e: Int): Double = e match {
+      case positive if e > 0 => loop(res * base, e - 1)
       case 0 => res
     }
+
     loop(1.0, exponent)
   }
 
   println("Results power with tail recursion: ")
   println(power(2, 3))
   println(power(5, 2))
+
+  def reverseNumber(n: Int): Int = {
+    def getDigit(n: Int, res: Int): Int = n match {
+      case 0 => res
+      case _ => getDigit(n / 10, res * 10 + n % 10)
+    }
+
+    getDigit(n, 0)
+  }
+  println("Reversion number: ")
+  println(reverseNumber(12345))
+
 
 }
