@@ -6,8 +6,6 @@ object Lab2 extends App {
   //Task 1
   println("Task 1:")
 
-  println("Hello World")
-
   def divide(x: Double, y: Double): Double = x / y
 
   def divideCurried(x: Double)(y: Double): Double = x / y
@@ -17,13 +15,13 @@ object Lab2 extends App {
 
   //Task 2
   println("\nTask 2:")
+
   //point 3 a
   println("Point 3a:")
   val x = -2
   val res = x match
-    case pos if x > 0 => "x is positive"
+    case n if n > 0 => "x is positive"
     case _ => "x is negative"
-
   println(res)
 
   //point 3 b
@@ -75,7 +73,7 @@ object Lab2 extends App {
 
   def power(base: Double, exponent: Int): Double = exponent match
     case positive if exponent > 0 => base * power(base, exponent - 1)
-    case 0 => 1.0
+    case _ => 1.0
 
   println("Results power: ")
   println(power(2, 3))
@@ -84,7 +82,7 @@ object Lab2 extends App {
   def power_tail(base: Double, exponent: Int): Double =
     def loop(res: Double, e: Int): Double = e match
       case positive if e > 0 => loop(res * base, e - 1)
-      case 0 => res
+      case _ => res
 
     loop(1.0, exponent)
 
@@ -99,7 +97,6 @@ object Lab2 extends App {
       case _ => getDigit(n / 10, res * 10 + n % 10)
 
     getDigit(n, 0)
-
 
   println("Reversion number: ")
   println(reverseNumber(12345))
@@ -150,7 +147,6 @@ object Lab2 extends App {
     def mapInt(opt: OptionalInt)(f: Int => Int): OptionalInt = opt match
       case Just(v) => Just(f(v))
       case _ => Empty()
-
 
     def filter(opt: OptionalInt)(p: Int => Boolean): OptionalInt = opt match
       case Just(v) if p(v) => Just(v)
