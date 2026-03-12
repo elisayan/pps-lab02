@@ -3,6 +3,7 @@ package it.unibo.pps.u02
 import it.unibo.pps.u02.Lab2.Expr.{Add, Literal, Multiply}
 
 object Lab2 extends App {
+
   //Task 1
   println("Task 1:")
 
@@ -86,7 +87,6 @@ object Lab2 extends App {
 
     loop(1.0, exponent)
 
-
   println("Results power with tail recursion: ")
   println(power(2, 3))
   println(power(5, 2))
@@ -111,7 +111,6 @@ object Lab2 extends App {
     case Literal(v) => v
     case Add(l, r) => evaluate(l) + evaluate(r)
     case Multiply(l, r) => evaluate(l) * evaluate(r)
-
 
   def show(e: Expr): String = e match
     case Literal(v) => v.toString
