@@ -1,6 +1,6 @@
 package it.unibo.pps.u02
 
-object Lab2 {
+object Lab2 extends App {
   //Task 1
   def divide(x: Double, y: Double): Double = x / y
 
@@ -64,5 +64,25 @@ object Lab2 {
   println(compose(_ - 1, _ * 2)(5)) // 9
 
   //Task 3
+  def power(base: Double, exponent:Int) : Double = exponent match {
+    case positive if exponent > 0 => base * power(base, exponent - 1)
+    case 0 => 1.0
+  }
+
+  println("Results power: ")
+  println(power(2,3))
+  println(power(5, 2))
+
+  def power_tail (base: Double, exponent : Int) : Double = {
+    def loop (res: Double, e: Int): Double = e match {
+      case positive if e > 0 => loop(res * base, e-1)
+      case 0 => res
+    }
+    loop(1.0, exponent)
+  }
+
+  println("Results power with tail recursion: ")
+  println(power(2, 3))
+  println(power(5, 2))
 
 }
